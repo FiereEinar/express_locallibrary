@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -13,7 +15,8 @@ const app = express();
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://nickxylanmelloria:asunayuuki11110@cluster0.ocnrcoj.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0";
+// const mongoDB = "mongodb+srv://nickxylanmelloria:asunayuuki11110@cluster0.ocnrcoj.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0";
+const mongoDB = process.env.DATABASE_LINK;
 
 main().catch((err) => console.log(err));
 
