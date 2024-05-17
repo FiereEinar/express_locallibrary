@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  //- h1= slur
+  h1 #{message} #{slur}
+  h2= error.status
+  pre #{error.stack}
