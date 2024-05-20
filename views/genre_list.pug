@@ -4,9 +4,9 @@ block content
   h1= title 
 
   if genre_list.length 
-    ul 
+    ul.list-group
       each genre in genre_list 
-        li 
+        li.list-group-item
           a(href=genre.url) #{genre.name} 
 
   else 

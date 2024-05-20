@@ -5,17 +5,29 @@ block content
 
   if bookinstance_list.length 
     ul 
+      ul.list-group.list-group-horizontal
+        li.list-group-item.flex-fill.width-limiter-600
+          p.normalized Book Title 
+        li.list-group-item.flex-fill.width-limiter-200
+          p.normalized Status 
+        li.list-group-item.flex-fill
+          p.normalized Due back date
       each instance in bookinstance_list
-        li 
-          a(href=instance.url) #{instance.book.title} : #{instance.imprint} -&nbsp;
-          if instance.status=='Available'
-            span.text-success #{instance.status}
-          else if instance.status=='Maintenance'
-            span.text-danger #{instance.status}
-          else 
-            span.text-warning #{instance.status} 
-          if instance.status!='Available'
-            span (Due: #{instance.due_back_formatted})
+        ul.list-group.list-group-horizontal
+          li.list-group-item.flex-fill.width-limiter-600
+            a(href=instance.url) #{instance.book.title} : #{instance.imprint} -&nbsp;
+          li.list-group-item.flex-fill.width-limiter-200
+            if instance.status=='Available'
+              span.text-success #{instance.status}
+            else if instance.status=='Maintenance'
+              span.text-danger #{instance.status}
+            else 
+              span.text-warning #{instance.status} 
+          li.list-group-item.flex-fill
+            if instance.status!='Available'
+              span Due: #{instance.due_back_formatted}
+            else 
+              span Not borrowed
 
   else 
     p There are no copies in this library
